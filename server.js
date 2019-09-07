@@ -5,28 +5,14 @@ const path = require("path");
 app.set('views', path.join(__dirname, 'vistas'));
 app.set('view engine', 'ejs');
 
-app.get('/', function (peticion, respuesta) {
-  respuesta.send('Hola asdasdsad!')
+app.get('/', function(req, res) {
+    res.render('index', { title: 'Hola a todos', message: 'Dogs rock!' });
 });
 
-app.get('/otra', function (req, res) {
-    res.send('Otra!')
-});
+//Rutas API
+const api = require('./rutas/api.js');
+app.use('/v1', api);
 
-app.get('/otro', function (req, res) {
-    res.send('Otro!')
-});
 
-app.post('/otro', function (req, res) {
-    res.send('Otro!')
-});
-
-app.post('/otro/:otro', function (req, res) {
-    res.send('Otro!')
-});
-
-app.get('/ejemplo', function(req, res) {
-    res.render('ejemplo', { title: 'Hola Gabi', message: 'Dogs rock!' });
-  });
 
 app.listen(3000);
