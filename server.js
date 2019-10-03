@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require("path");
+const Conexion = require("./servicios/conexion.js");
+
 //Agregamos el body parser para poder obtener los datos de la petición
 const bodyParser = require('body-parser')
 app.use(
@@ -21,4 +23,14 @@ app.get('/', function(req, res) {
 const api = require('./rutas/api.js');
 app.use('/v1', api);
 
-app.listen(3000);
+Conexion.connect( function(err) {
+  if (err) {
+    console.log(err);
+    console.log('Unable to connect to Mongo.')
+    process.exit(1)
+  } else {
+    app.listen(3000, function() {
+      console.log('Conectado. Escuchando en puerto 3000.')
+    })
+  }
+})

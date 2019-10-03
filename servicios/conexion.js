@@ -1,28 +1,34 @@
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
-
-// Create a new MongoClient
-const client = new MongoClient(url);
-
-// Database Name
-const dbName = 'equiposapi';
-
-const insertar = function(coleccion, data) {
-    client.connect(function(err, client) {
-        if (err)
-            throw err;
-        console.log("Connected correctly to server");
-  
-        const db = client.db(dbName);
-        db.collection(coleccion).insertOne(data, function(err, r) {
-            throw err;
-            client.close();
-        });
-    });    
+const estado = {
+    db: null,
+    url: 'mongodb://localhost:27017'
 }
 
-module.exports = {
-    insertar: insertar
+exports.ObjectID = ObjectID;
+
+exports.connect = function(respuesta) {
+    if (estado.db) return respuesta()
+    
+    MongoClient.connect(estado.url, function(err, db) {
+        if (err) 
+            return respuesta(err)
+        estado.db = db.db("cuentasapi");
+        respuesta()
+    });
+}
+
+exports.get = function() {
+    return estado.db
+}
+
+exports.close = function(done) {
+    if (estado.db) {
+        estado.db.close(function(err, result) {
+            estado.db = null
+            estado.mode = null
+            done(err)
+        })
+    }
 }
