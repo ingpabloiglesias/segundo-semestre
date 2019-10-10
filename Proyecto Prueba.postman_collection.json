@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "927f7b3f-ea8a-42a7-806c-3b650b38aba0",
+		"name": "Proyecto Prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Cuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/cuentas",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/cuentas/5d9faf8be7df31604710638b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"cuentas",
+						"5d9faf8be7df31604710638b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cuenta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Ivan",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Varela",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ivar",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qweqwe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "asdasd@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "fecha_nacimiento",
+							"value": "590976000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"cuentas"
+					],
+					"query": [
+						{
+							"key": "asdasd",
+							"value": "asdasdas",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Crear una cuenta en nuestra API"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Cuenta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/cuentas/5d9faf8be7df31604710638b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"cuentas",
+						"5d9faf8be7df31604710638b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Cuenta",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Ivan",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "apellido",
+							"value": "Varela",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "ivar",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "asdasd",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "asdasd@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fecha_nacimiento",
+							"value": "590976000",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/cuentas/5d9faf8be7df31604710638b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"cuentas",
+						"5d9faf8be7df31604710638b"
+					],
+					"query": [
+						{
+							"key": "asdasd",
+							"value": "asdasdas",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

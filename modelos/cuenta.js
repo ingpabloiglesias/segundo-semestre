@@ -13,6 +13,14 @@ const CuentaModel = {
 
     leerPorId: function(id) {
         return Conexion.get().collection(this.coleccion).findOne({'_id' : Conexion.ObjectID(id)});
+    },
+
+    actualizar: function(id, data) {
+        return Conexion.get().collection(this.coleccion).updateOne({'_id' : Conexion.ObjectID(id)}, data);
+    },
+
+    eliminar: function(id) {
+        return Conexion.get().collection(this.coleccion).deleteOne({'_id' : Conexion.ObjectID(id)});
     }
 };
 

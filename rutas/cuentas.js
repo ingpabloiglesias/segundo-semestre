@@ -31,16 +31,26 @@ router.post('/', function(req, res, next) {
     })
 });
 
-router.post('/:idcuenta', function(req, res) {
-    res.send('Editar cuenta.');
+//Arreglar
+router.post('/:idcuenta', function(req, res, next) {
+    CuentasServicio.update(req.params.idcuenta, req.body).then(function(cuenta){
+        console.log(cuenta);
+        res.json(cuenta);
+        next();
+    }).catch((err) => {
+        console.log(err);
+        next();
+    })
 });
 
-router.put('/:idcuenta', function(req, res) {
-    res.send('Editar cuenta 2.');
-});
-
-router.delete('/:idcuenta', function(req, res) {
-    res.send('Eliminar cuenta.');
+router.delete('/:idcuenta', function(req, res, next) {
+    CuentasServicio.delete(req.params.idcuenta).then(function(){    
+        res.json({exito: true});
+        next();
+    }).catch((err) => {
+        console.log(err);
+        next();
+    })
 });
 
 module.exports = router;
