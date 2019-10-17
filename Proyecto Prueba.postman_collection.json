@@ -30,7 +30,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/v1/cuentas/5d9faf8be7df31604710638b",
+					"raw": "localhost:3000/v1/cuentas/5da8e5d1ac5ffa3af6d66108",
 					"host": [
 						"localhost"
 					],
@@ -38,7 +38,7 @@
 					"path": [
 						"v1",
 						"cuentas",
-						"5d9faf8be7df31604710638b"
+						"5da8e5d1ac5ffa3af6d66108"
 					]
 				}
 			},
@@ -57,37 +57,42 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"mode": "formdata",
+					"formdata": [
 						{
 							"key": "nombre",
-							"value": "Ivan",
+							"value": "Pikachu",
 							"type": "text"
 						},
 						{
 							"key": "apellido",
-							"value": "Varela",
+							"value": "Ketchum",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "ivar",
+							"value": "pikapika",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "qweqwe",
+							"value": "pokemon123",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "asdasd@gmail.com",
+							"value": "pikachu@pokemon.com",
 							"type": "text"
 						},
 						{
 							"key": "fecha_nacimiento",
 							"value": "590976000",
 							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/home/pabloi/Descargas/pikachu.jpg"
 						}
 					]
 				},
@@ -137,7 +142,7 @@
 		{
 			"name": "Actualizar Cuenta",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -147,47 +152,22 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"mode": "formdata",
+					"formdata": [
 						{
 							"key": "nombre",
-							"value": "Ivan",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "apellido",
-							"value": "Varela",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "username",
-							"value": "ivar",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "password",
-							"value": "asdasd",
+							"value": "Raichu",
 							"type": "text"
 						},
 						{
-							"key": "email",
-							"value": "asdasd@gmail.com",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "fecha_nacimiento",
-							"value": "590976000",
-							"type": "text",
-							"disabled": true
+							"key": "imagen",
+							"type": "file",
+							"src": "/home/pabloi/Descargas/raichu.png"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/v1/cuentas/5d9faf8be7df31604710638b",
+					"raw": "http://localhost:3000/v1/cuentas/5da8e5d1ac5ffa3af6d66108",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -196,7 +176,7 @@
 					"path": [
 						"v1",
 						"cuentas",
-						"5d9faf8be7df31604710638b"
+						"5da8e5d1ac5ffa3af6d66108"
 					],
 					"query": [
 						{

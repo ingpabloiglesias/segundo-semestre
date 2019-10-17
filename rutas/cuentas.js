@@ -2,9 +2,31 @@ const express = require('express');
 const router = express.Router();
 const CuentasServicio = require("../servicios/cuentas");
 
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/cuentas')
+    },
+    filename: function (req, file, cb) {
+        let extension = "";
+        switch (file.mimetype) {
+            case "image/jpeg":
+                extension = ".jpeg";
+                break;
+            case "image/png":
+                extension = ".png";
+                break;
+            default:
+                extension = "";
+        }
+        cb(null, Math.ceil(Math.random() * 100000) + "-" + Date.now() + extension)
+    }
+  })
+  
+const upload = multer({ storage: storage });
+
 router.get('/', function(req, res, next) {
     CuentasServicio.index().then(function(cuentas){
-        console.log(cuentas);
         res.json(cuentas);
         next();
     }).catch((err) => {
@@ -23,19 +45,22 @@ router.get('/:idcuenta', function(req, res, next) {
         next();
     })
 });
-
-router.post('/', function(req, res, next) {
+//Crear una cuenta
+router.post('/', upload.single("imagen"), function(req, res, next) {
+    console.log(req.file);
+    if (req.file && req.file.filename)
+        req.body.imagen = "http://localhost:3000/img/cuentas/" + req.file.filename
     CuentasServicio.create(req.body).then((resultado) => {
         res.json(resultado.ops[0]);
         next();
     })
 });
 
-//Arreglar
-router.post('/:idcuenta', function(req, res, next) {
-    CuentasServicio.update(req.params.idcuenta, req.body).then(function(cuenta){
-        console.log(cuenta);
-        res.json(cuenta);
+router.post('/:idcuenta', upload.single("imagen"), function(req, res, next) {
+    if (req.file && req.file.filename)
+        req.body.imagen = "http://localhost:3000/img/cuentas/" + req.file.filename
+    CuentasServicio.update(req.params.idcuenta, req.body).then(function(){
+        res.json({exito: true});
         next();
     }).catch((err) => {
         console.log(err);

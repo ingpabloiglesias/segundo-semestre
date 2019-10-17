@@ -19,6 +19,8 @@ app.get('/', function(req, res) {
     res.render('index', { title: 'Hola a todos', message: 'Dogs rock!' });
 });
 
+//Imagenes
+app.use("/img", express.static("uploads"));   
 //Rutas API
 const api = require('./rutas/api.js');
 app.use('/v1', api);

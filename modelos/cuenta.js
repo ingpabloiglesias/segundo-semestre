@@ -16,7 +16,7 @@ const CuentaModel = {
     },
 
     actualizar: function(id, data) {
-        return Conexion.get().collection(this.coleccion).updateOne({'_id' : Conexion.ObjectID(id)}, data);
+        return Conexion.get().collection(this.coleccion).updateOne({'_id' : Conexion.ObjectID(id)}, {$set: data});
     },
 
     eliminar: function(id) {
