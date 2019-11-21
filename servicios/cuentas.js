@@ -5,6 +5,19 @@ const CuentasServicio = {
         return Cuenta.leer();
     },
 
+    login: function(usuario, password) {
+        let userObj = {};
+        const buscarUsuario = Cuenta.buscarPorUsuario(usuario, password);
+        const validarPassword = buscarUsuario.then(function(data) {
+            userObj = data;
+            Cuenta.validarPassword(data, password);
+        });
+        const crearSesion = validarPassword.then(function() {
+            return Cuenta.crearSesion(userObj);
+        });
+        return crearSesion;
+    },
+
     read: function(idcuenta) {
         return Cuenta.leerPorId(idcuenta);
     },
@@ -19,6 +32,10 @@ const CuentasServicio = {
 
     delete: function(idcuenta) {
         return Cuenta.eliminar(idcuenta);
+    },
+
+    getSession: function(token) {
+        return Cuenta.buscarSesion(token);
     }
 }
 

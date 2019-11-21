@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const CuentasServicio = require("../servicios/cuentas");
+const AuthServicio = require("../servicios/auth");
 
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -25,7 +26,7 @@ const storage = multer.diskStorage({
   
 const upload = multer({ storage: storage });
 
-router.get('/', function(req, res, next) {
+router.get('/', AuthServicio.adminAuth, function(req, res, next) {
     CuentasServicio.index().then(function(cuentas){
         res.json(cuentas);
         next();
@@ -37,7 +38,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/:idcuenta', function(req, res, next) {
     CuentasServicio.read(req.params.idcuenta).then(function(cuenta){
-        console.log(cuenta);
         res.json(cuenta);
         next();
     }).catch((err) => {
