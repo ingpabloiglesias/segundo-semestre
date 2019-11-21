@@ -7,12 +7,12 @@ const adminAuth = (req, res, next) => {
     if (token) {
         jwt.verify(token, process.env.master_key, (err, decoded) => {      
             if (err) {
-                return res.json({ mensaje: 'Token inválida' });    
+                return res.json({ mensaje: 'Token inválida' , error: err});    
             } else {
-                CuentasServicio.getSession(token).then(function(data) {
-                    console.log(data);
-                    if (data.isAdmin) {
+                CuentasServicio.getSession(token).then(function(usuario) {
+                    if (usuario.isAdmin) {
                         req.decoded = decoded;
+                        req.user = usuario;
                         next();
                     } else {
                         res.send({ 
@@ -28,7 +28,7 @@ const adminAuth = (req, res, next) => {
         });
     } else {
         res.send({ 
-            mensaje: 'Token no proveída.' 
+            mensaje: 'Token no presente.' 
         });
     }
 };

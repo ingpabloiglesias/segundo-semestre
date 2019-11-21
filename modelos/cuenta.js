@@ -16,8 +16,11 @@ const CuentaModel = {
     },
 
     leerPorId: function(id) {
-        console.log(id);
         return Conexion.get().collection(this.coleccion).findOne({'_id' : Conexion.ObjectID(id)});
+    },
+
+    buscarPorUsuario: function(usuario) {
+        return Conexion.get().collection(this.coleccion).findOne({'username': usuario});
     },
 
     actualizar: function(id, data) {
@@ -28,16 +31,11 @@ const CuentaModel = {
         return Conexion.get().collection(this.coleccion).deleteOne({'_id' : Conexion.ObjectID(id)});
     },
 
-    buscarPorUsuario: function(usuario) {
-        return Conexion.get().collection(this.coleccion).findOne({'username': usuario});
-    },
-
     validarPassword: function(usuario, password) {
         return bcrypt.compare(password, usuario.password);
     },
 
     crearSesion: function(usuario) {
-        console.log(usuario);
         const payload = {
             check:  true,
             user_id: usuario._id,

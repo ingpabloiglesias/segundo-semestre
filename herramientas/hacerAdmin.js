@@ -1,7 +1,6 @@
 const Conexion = require("../servicios/conexion");
 
 const myArgs = process.argv.slice(2);
-console.log('myArgs: ', myArgs);
 
 Conexion.connect( function(err) {
     if (err) {

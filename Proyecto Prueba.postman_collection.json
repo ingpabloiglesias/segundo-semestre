@@ -8,6 +8,21 @@
 		{
 			"name": "Get Cuentas",
 			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwidXNlcl9pZCI6IjVkZDcwZDFlMzgwMmIyNjFiZGJiMmMxMyIsImlhdCI6MTU3NDM3NDcxMCwiZXhwIjoxNTc0Mzc4MzEwfQ.HP2QSUFBsIeWURqMkxh6RaedcKr3y4eG2sbSFAO68TY",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "access-token",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -30,7 +45,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/v1/cuentas/5da8e5d1ac5ffa3af6d66108",
+					"raw": "localhost:3000/v1/cuentas/5dd70d1e3802b261bdbb2c13",
 					"host": [
 						"localhost"
 					],
@@ -38,7 +53,7 @@
 					"path": [
 						"v1",
 						"cuentas",
-						"5da8e5d1ac5ffa3af6d66108"
+						"5dd70d1e3802b261bdbb2c13"
 					]
 				}
 			},
@@ -61,38 +76,40 @@
 					"formdata": [
 						{
 							"key": "nombre",
-							"value": "Pikachu",
+							"value": "Usuario",
 							"type": "text"
 						},
 						{
 							"key": "apellido",
-							"value": "Ketchum",
+							"value": "Admin2",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "pikapika",
+							"value": "admin2",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "pokemon123",
+							"value": "adminadmin2",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "pikachu@pokemon.com",
+							"value": "admin2@localhost.com",
 							"type": "text"
 						},
 						{
 							"key": "fecha_nacimiento",
 							"value": "590976000",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "imagen",
 							"type": "file",
-							"src": "/home/pabloi/Descargas/pikachu.jpg"
+							"src": [],
+							"disabled": true
 						}
 					]
 				},
@@ -177,6 +194,55 @@
 						"v1",
 						"cuentas",
 						"5da8e5d1ac5ffa3af6d66108"
+					],
+					"query": [
+						{
+							"key": "asdasd",
+							"value": "asdasdas",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Iniciar Sesion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "usuario",
+							"value": "admin2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "adminadmin2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/inicio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"inicio"
 					],
 					"query": [
 						{
